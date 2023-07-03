@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>UJJWAL</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">ss
+  <!-- Home CSS -->
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.css">
+</head>
+
+<body onload="removeLoader();">
+
+  <!-- Loader -->
+  <div id="loader">
+    <video src="loader.mp4" id="loader_video" loop autoplay muted></video>
+  </div>
+
+  <script>
+    function removeLoader() {
+      document.getElementById("loader").style.display = 'none';
+      scramble(brand, "HIRESMARTLY", 20);
+    }
+  </script>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark navbar-bg fixed-top text-center py-3" id="navbar">
+
+    <button class="navbar-toggler ml-3 my-2" id="navbar-toggler" type="button" data-toggle="collapse"
+      data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse p-2" id="navbarSupportedContent" id="collapsed">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Login.html">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="candidate.html">Candidate</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="aboutus.html">About Us</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <h1  class="mr-3 my-1" id="logo" height="75px" >UJJWAL</h1>
+
+  <script>
+    var navbar = document.getElementById("navbar");
+    window.addEventListener("scroll", function () {
+      navbar.classList.add("scrolled-navbar");
+    });
+  </script>
+
+
+  <div class="page">
+    <div class="rotator1"></div>
+    <div class="rotator2"></div>
+  </div>
+
+  <!-- MAIN ANIMATION -->
+  <div class="d-flex row flex-wrap text-center text-light fullheight mx-0 justify-content-center align-items-center">
+    <span class="col-12 display-1 glitch_city responsive align-self-end" id="brand">HIRESMARTLY</span>
+    <span class="col-12 h4 align-self-start" id="tagline">Connecting Talent. Fueling Success.</span>
+  </div>
+
+  <!-- Scramble JS -->
+  <script>
+    var brand = document.getElementById('brand');
+    var intervals = [];
+
+    function scramble(element, text, time) {
+      var length = element.innerText.length;
+      var diff = (length - text.length) * -1;
+      var count = 0;
+      var lettersPerIteration = 0;
+      if (diff !== 0) {
+        lettersPerIteration = diff / time;
+      }
+      var eleId = element.id;
+      clearInterval(intervals[eleId]);
+      var tempText = '';
+      intervals[eleId] = setInterval(function () {
+        tempText = getRandomString(Math.round(length));
+        length += lettersPerIteration;
+        element.innerHTML = tempText;
+        if (count++ > time) {
+          clearInterval(intervals[eleId]);
+          element.innerHTML = text;
+        }
+      }, 35);
+    }
+
+    function getRandomString(length) {
+      var priv = {};
+      priv.consonants = ['B', 'C', 'D', 'E', 'F', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'R', 's', 't', 'v', 'w'];
+      priv.vowels = ['A', 'E', 'I', 'O', 'U'];
+      priv.result = '';
+      priv.getLetter = function (datasource) {
+        var key = Math.floor(Math.random() * datasource.length);
+        return datasource[key];
+      }
+      var loopStat = 0;
+      if (!length) {
+        length = 6;
+      }
+      while (loopStat < length) {
+        if (loopStat === null || loopStat % 2) {
+          priv.result += priv.getLetter(priv.vowels);
+        } else {
+          priv.result += priv.getLetter(priv.consonants);
+        }
+        loopStat++;
+      }
+      return priv.result;
+    }
+
+    setInterval(function () {
+      scramble(brand, 'HIRESMARTLY', 20)
+    }, 5000);
+  </script>
+
+  <!-- Typed JS -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+  <script>
+    var strings = ['<em>just one click from success</em>', '<em>Connecting Talent. Fueling Success.</em>']
+    var typed = new Typed('#tagline', {
+      strings: strings,
+      typeSpeed: 0,
+      backSpeed: 0,
+      backDelay: 4500,
+      startDelay: 0,
+      cursorChar: '',
+      fadeOut: true,
+      loop: true
+    });
+  </script>
+
+  <!-- Clock -->
+  
+
+  <!-- MAP -->
+  
+
+  <!-- FOOTER -->
+  <div class="container-fluid text-center pt-3 pb-2 text-secondary" id="footer">
+    <a href="#"><img src="scroll_down.png" class="mb-1 img-fluid" id="scroll_down alt=""></a>
+    <p class="lead">&copy;All Rights Reserved. Hiresmartly</p>
+  </div>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
